@@ -21,7 +21,5 @@ app.delete("/student/:id",StudentConrtoller.destroy),
 
 
 app.listen(port,() => {
-        console.log(`server:http://localhost:${port}`)
+        console.log(`server:http://locahost:${port}`)
 })
-
-
