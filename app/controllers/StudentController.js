@@ -1,15 +1,23 @@
-const StudentModel = require("../models/Studentmodel");
+const StudentModel = require("../models/StudentModel");
 
 const StudentController = {
   async create(req, res) {
     const body = req.body;
 
-    await StudentModel.create(body);
+    try {
+      await StudentModel.create(body);
 
-    res.send({
-      message: "Success! New record created.",
-      reqBody: body,
-    });
+      res.status(201).send({
+        message: "Success! New record created.",
+        reqBody: body,
+      });
+    } catch (error) {
+      console.error("Error occured while creating new student: ", error);
+
+      res.status(500).send({
+        error: error.message
+      });
+    }
   },
   async readAll(req, res) {
     const students = await StudentModel.find();
