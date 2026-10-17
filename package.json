@@ -1,16 +1,21 @@
 {
-  "name": "d2",
+  "name": "routing",
   "version": "1.0.0",
-  "description": "working ",
+  "description": "project to demonstrate routin using http methods",
   "license": "ISC",
-  "author": "ishan",
+  "author": "rajesh phulwaria",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
+    "dev": "npx nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.3",
     "express": "^5.2.1",
-    "mongoose": "^9.11.1"
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.11.1",
+    "nodemon": "^3.1.14"
   }
 }

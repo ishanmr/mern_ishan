@@ -1,23 +1,31 @@
 const StudentModel = require("../models/StudentModel");
-
+// npm i bcryptjs jsonwebtoken
 const StudentController = {
   async create(req, res) {
     const body = req.body;
 
-    try {
-      await StudentModel.create(body);
-
-      res.status(201).send({
-        message: "Success! New record created.",
-        reqBody: body,
-      });
-    } catch (error) {
-      console.error("Error occured while creating new student: ", error);
-
+    if(!body.name) {
       res.status(500).send({
-        error: error.message
-      });
+        error: "Name is required"
+      })
+    } else {
+      
+      try {
+        await StudentModel.create(body);
+  
+        res.status(201).send({
+          message: "Success! New record created.",
+          reqBody: body,
+        });
+      } catch (error) {
+        console.error("Error occured while creating new student: ", error);
+        
+        res.status(500).send({
+          error: error,
+        });
+      }
     }
+
   },
   async readAll(req, res) {
     const students = await StudentModel.find();
